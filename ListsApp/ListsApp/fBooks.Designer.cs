@@ -33,7 +33,7 @@
             this.lbBooks = new System.Windows.Forms.ListBox();
             this.btnDeleteBook = new System.Windows.Forms.Button();
             this.tbNewBook = new System.Windows.Forms.TextBox();
-            this.rtb = new System.Windows.Forms.RichTextBox();
+            this.btnClose = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnAddBook
@@ -77,13 +77,15 @@
             this.tbNewBook.Size = new System.Drawing.Size(416, 26);
             this.tbNewBook.TabIndex = 3;
             // 
-            // rtb
+            // btnClose
             // 
-            this.rtb.Location = new System.Drawing.Point(171, 214);
-            this.rtb.Name = "rtb";
-            this.rtb.Size = new System.Drawing.Size(222, 179);
-            this.rtb.TabIndex = 4;
-            this.rtb.Text = "";
+            this.btnClose.Location = new System.Drawing.Point(370, 650);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(80, 35);
+            this.btnClose.TabIndex = 4;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.button1_Click);
             // 
             // fBooks
             // 
@@ -92,7 +94,7 @@
             this.BackgroundImage = global::ListsApp.Properties.Resources.Backgrounds_Blue_and_pink_background_035585_;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(453, 697);
-            this.Controls.Add(this.rtb);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.tbNewBook);
             this.Controls.Add(this.btnDeleteBook);
             this.Controls.Add(this.lbBooks);
@@ -112,6 +114,6 @@
         private System.Windows.Forms.ListBox lbBooks;
         private System.Windows.Forms.Button btnDeleteBook;
         private System.Windows.Forms.TextBox tbNewBook;
-        private System.Windows.Forms.RichTextBox rtb;
+        private System.Windows.Forms.Button btnClose;
     }
 }

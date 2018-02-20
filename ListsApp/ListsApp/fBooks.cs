@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Win32;
+using System.IO;
 
 namespace ListsApp
 {
@@ -17,14 +19,22 @@ namespace ListsApp
         {
             try
             {
-                rtb.LoadFile("Books.rtf");
+                StreamReader file = new StreamReader("Books.rtf");
+                string s;
+                while (!file.EndOfStream)
+                {
+                    s = file.ReadLine();
+                    lbBooks.Items.Add(s);
+                }
+                file.Close();
+                lbBooks.Show();
             }
             catch
             {
                 MessageBox.Show("error opening file\r\n");
             }
         }
-public fBooks()
+        public fBooks()
         {
             InitializeComponent();
         }
@@ -32,29 +42,37 @@ public fBooks()
         private void fBooks_Load(object sender, EventArgs e)
         {
             OpenBooks();
-            //rtb.LoadFile("Books.rtf");
-            lbBooks.Text = rtb.Text;
-            rtb.Show();
-            lbBooks.Show();
-            //if (lbBooks.Items.Count != 0)
-                
         }
 
         private void btnAddBook_Click(object sender, EventArgs e)
         {
             string s;
             s = "• " + tbNewBook.Text.ToString();
-            lbBooks.Items.Add(s);
-            rtb.Text += s+"\r\n";
-            rtb.SaveFile("Books.rtf");
-            tbNewBook.Clear(); 
-
-
+            lbBooks.Items.Add(s); 
+            StreamWriter file = File.AppendText("Books.rtf");
+            file.WriteLine(s);
+            file.Close();  
+            tbNewBook.Clear();
         }
 
         private void btnDeleteBook_Click(object sender, EventArgs e)
         {
             lbBooks.Items.Remove(lbBooks.SelectedItem);
+            string s;
+            File.WriteAllText("Books.rtf","");
+            StreamWriter file = File.AppendText("Books.rtf");
+            for (int i=0;i<lbBooks.Items.Count;i++)
+            {
+                s = Convert.ToString(lbBooks.Items[i]);
+                file.WriteLine(s);
+            }
+            file.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            lbBooks.Items.Clear();
+            this.Close();
         }
     }
 }
