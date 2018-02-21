@@ -45,11 +45,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BooksSettings.cs" />
     <Compile Include="fBooks.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="fBooks.Designer.cs">
       <DependentUpon>fBooks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fBooksSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fBooksSettings.Designer.cs">
+      <DependentUpon>fBooksSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -62,6 +69,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="fBooks.resx">
       <DependentUpon>fBooks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fBooksSettings.resx">
+      <DependentUpon>fBooksSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

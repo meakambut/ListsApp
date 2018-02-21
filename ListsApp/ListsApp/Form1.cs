@@ -36,5 +36,10 @@ namespace ListsApp
         {
 
         }
+
+        private void btnCloseMainForm_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

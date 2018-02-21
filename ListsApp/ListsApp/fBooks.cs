@@ -14,7 +14,7 @@ namespace ListsApp
 {
     public partial class fBooks : Form
     {
-
+        fBooksSettings fbs = new fBooksSettings();
         void OpenBooks()
         {
             try
@@ -41,6 +41,9 @@ namespace ListsApp
 
         private void fBooks_Load(object sender, EventArgs e)
         {
+            BooksSettings.GetSettings();
+            lblLeftBooks.Text = "You have " + Convert.ToString(BooksSettings.BooksLeftPerYear) + " books left to read this year";
+            lblLeftBooks.Show();
             OpenBooks();
         }
 
@@ -53,26 +56,48 @@ namespace ListsApp
             file.WriteLine(s);
             file.Close();  
             tbNewBook.Clear();
+            BooksSettings.BooksLeftPerYear--;
+            BooksSettings.SaveSettings();
+            lblLeftBooks.Text = "You have " + Convert.ToString(BooksSettings.BooksLeftPerYear) + " books left to read this year";
+            lblLeftBooks.Show();
         }
 
         private void btnDeleteBook_Click(object sender, EventArgs e)
         {
-            lbBooks.Items.Remove(lbBooks.SelectedItem);
-            string s;
-            File.WriteAllText("Books.rtf","");
-            StreamWriter file = File.AppendText("Books.rtf");
-            for (int i=0;i<lbBooks.Items.Count;i++)
+            if (lbBooks.SelectedItem != null)
             {
-                s = Convert.ToString(lbBooks.Items[i]);
-                file.WriteLine(s);
+                lbBooks.Items.Remove(lbBooks.SelectedItem);
+                BooksSettings.BooksLeftPerYear++;
+                string s;
+                File.WriteAllText("Books.rtf", "");
+                StreamWriter file = File.AppendText("Books.rtf");
+                for (int i = 0; i < lbBooks.Items.Count; i++)
+                {
+                    s = Convert.ToString(lbBooks.Items[i]);
+                    file.WriteLine(s);
+                }
+                file.Close();
+
+                BooksSettings.SaveSettings();
+                lblLeftBooks.Text = "You have " + Convert.ToString(BooksSettings.BooksLeftPerYear) + " books left to read this year";
+                lblLeftBooks.Show();
             }
-            file.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             lbBooks.Items.Clear();
             this.Close();
+        }
+
+        private void btnBooksSettings_Click(object sender, EventArgs e)
+        {
+            fbs.ShowDialog();
+        }
+
+        private void tbNewBook_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

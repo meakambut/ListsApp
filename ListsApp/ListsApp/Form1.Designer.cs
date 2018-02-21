@@ -32,6 +32,7 @@
             this.btnBooks = new System.Windows.Forms.Button();
             this.btnFilms = new System.Windows.Forms.Button();
             this.btnTVseries = new System.Windows.Forms.Button();
+            this.btnCloseMainForm = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnBooks
@@ -70,6 +71,16 @@
             this.btnTVseries.UseVisualStyleBackColor = true;
             this.btnTVseries.Click += new System.EventHandler(this.button3_Click);
             // 
+            // btnCloseMainForm
+            // 
+            this.btnCloseMainForm.Location = new System.Drawing.Point(366, 653);
+            this.btnCloseMainForm.Name = "btnCloseMainForm";
+            this.btnCloseMainForm.Size = new System.Drawing.Size(75, 32);
+            this.btnCloseMainForm.TabIndex = 3;
+            this.btnCloseMainForm.Text = "Close";
+            this.btnCloseMainForm.UseVisualStyleBackColor = true;
+            this.btnCloseMainForm.Click += new System.EventHandler(this.btnCloseMainForm_Click);
+            // 
             // fMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -78,6 +89,8 @@
             this.BackgroundImage = global::ListsApp.Properties.Resources.Backgrounds_Blue_and_pink_background_035585_;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(453, 697);
+            this.ControlBox = false;
+            this.Controls.Add(this.btnCloseMainForm);
             this.Controls.Add(this.btnTVseries);
             this.Controls.Add(this.btnFilms);
             this.Controls.Add(this.btnBooks);
@@ -94,6 +107,7 @@
         private System.Windows.Forms.Button btnBooks;
         private System.Windows.Forms.Button btnFilms;
         private System.Windows.Forms.Button btnTVseries;
+        private System.Windows.Forms.Button btnCloseMainForm;
     }
 }
 
